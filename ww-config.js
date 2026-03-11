@@ -29,7 +29,7 @@ export default {
         { id: '5', category: 'Membership', question: 'What is included in my membership?', answer: 'Membership gives you access to weekly deliveries, exclusive farm-gate pricing, priority capacity in your region, and a household sharing feature.' },
         { id: '6', category: 'Membership', question: 'How do I cancel my membership?', answer: 'You can cancel anytime from your account settings. No lock-in contracts. Your access continues until the end of the current billing period.' },
         { id: '7', category: 'Delivery', question: 'How is my produce packed?', answer: 'All produce is packed in reusable crates or compostable packaging to minimise waste. Crates are collected on your next delivery.' },
-        { id: '8', category: 'Delivery', question: 'What happens if I'm not home?', answer: 'You can specify a safe drop location in your account. We'll leave your order there with a delivery notification.' },
+        { id: '8', category: 'Delivery', question: "What happens if I'm not home?", answer: "You can specify a safe drop location in your account. We'll leave your order there with a delivery notification." },
       ],
       options: {
         item: {
