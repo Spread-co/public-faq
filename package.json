@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "FAQ accordion with category filtering for Spread.co public pages",
   "scripts": {
-    "build": "weweb build",
+    "build": "weweb build -- name=public-faq type=element",
     "serve": "weweb serve"
   },
   "devDependencies": {
