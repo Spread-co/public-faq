@@ -83,6 +83,13 @@ export default {
       bindable: true,
       defaultValue: 'mailto:hello@spread.co',
     },
+    portalTarget: {
+      label: { en: 'Portal Target' },
+      type: 'Text',
+      bindable: true,
+      hidden: true,
+      defaultValue: '',
+    },
   },
   triggerEvents: [
     {

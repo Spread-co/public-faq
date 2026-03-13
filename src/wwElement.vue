@@ -1,5 +1,5 @@
 <template>
-  <section class="faq">
+  <section v-if="!content.portalTarget || content.portalTarget === 'public'" class="faq">
     <!-- Header -->
     <header class="faq__header">
       <h2 class="faq__headline" v-if="content.headline">{{ content.headline }}</h2>
