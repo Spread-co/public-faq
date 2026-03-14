@@ -90,6 +90,7 @@ export default {
     return {
       openIds:        [],
       activeCategory: '',
+      dbFaqs:         null,   // null = not loaded; [] = loaded but empty; [...] = loaded
     };
   },
 
@@ -97,10 +98,13 @@ export default {
     if (this.content.defaultCategory) {
       this.activeCategory = this.content.defaultCategory;
     }
+    this._loadFromDb();
   },
 
   computed: {
     faqs() {
+      // DB-first: if dbFaqs loaded and non-empty, use them; otherwise fall back to config
+      if (Array.isArray(this.dbFaqs) && this.dbFaqs.length > 0) return this.dbFaqs;
       return Array.isArray(this.content.faqs) ? this.content.faqs : [];
     },
 
@@ -152,6 +156,31 @@ export default {
 
     handleContactClick() {
       this.$emit('trigger-event', { name: 'faq:contact-clicked', event: {} });
+    },
+
+    async _loadFromDb() {
+      const url = this.content?.supabaseUrl;
+      const key = this.content?.supabaseAnonKey;
+      if (!url || !key) return;
+      try {
+        const res = await fetch(`${url}/rest/v1/rpc/get_faq_items`, {
+          method:  'POST',
+          headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+          body:    JSON.stringify({}),
+        });
+        if (!res.ok) return;
+        const rows = await res.json();
+        if (Array.isArray(rows) && rows.length > 0) {
+          this.dbFaqs = rows.map(r => ({
+            id:       r.id,
+            category: r.category || '',
+            question: r.question,
+            answer:   r.answer,
+          }));
+        } else {
+          this.dbFaqs = [];
+        }
+      } catch { /* silent fallback to config props */ }
     },
   },
 };

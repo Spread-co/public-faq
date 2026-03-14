@@ -5,6 +5,20 @@ export default {
     categories: ['content'],
   },
   properties: {
+    supabaseUrl: {
+      label:    { en: 'Supabase URL' },
+      type:     'Text',
+      bindable: true,
+      hidden:   true,
+      defaultValue: '',
+    },
+    supabaseAnonKey: {
+      label:    { en: 'Supabase Anon Key' },
+      type:     'Text',
+      bindable: true,
+      hidden:   true,
+      defaultValue: '',
+    },
     headline: {
       label: { en: 'Section Headline' },
       type: 'Text',
