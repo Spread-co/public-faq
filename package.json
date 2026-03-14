@@ -1,6 +1,6 @@
 {
   "name": "public-faq",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "FAQ accordion with category filtering for Spread.co public pages",
   "scripts": {
     "build": "weweb build -- name=public-faq type=element",

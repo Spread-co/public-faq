@@ -420,6 +420,15 @@ export default {
   }
 }
 
+@media (max-width: 479px) {
+  .faq { padding: 40px 16px 48px; }
+}
+@media (min-width: 480px) {
+  .faq { padding: 56px 24px 64px; }
+}
+@media (min-width: 1280px) {
+  .faq { padding: 112px 80px 112px; }
+}
 /* ── Print styles ────────────────────────────────────────────────────────── */
 @media print {
   .faq__categories { display: none; }
