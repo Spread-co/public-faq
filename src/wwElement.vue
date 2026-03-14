@@ -181,6 +181,8 @@ export default {
   background: var(--faq-bg);
   padding: 48px 20px 64px;
   color: var(--faq-text);
+  max-width: 1440px;
+  margin-inline: auto;
 }
 
 .faq *, .faq *::before, .faq *::after { box-sizing: border-box; margin: 0; padding: 0; }
