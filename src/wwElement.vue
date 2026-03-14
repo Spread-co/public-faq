@@ -68,6 +68,7 @@
         class="faq__contact-link"
         :href="content.contactLinkUrl"
         @click="handleContactClick"
+        data-tooltip="Get in touch with our support team"
       >{{ content.contactLinkLabel }}</a>
     </div>
   </section>
@@ -465,4 +466,45 @@ export default {
   .faq__answer-wrap { max-height: none !important; }
   .faq__contact { background: transparent; color: var(--faq-text); border: 1px solid #ccc; }
 }
+
+/* ── Tooltips ────────────────────────────────────────────────────────────── */
+[data-tooltip] { position: relative; }
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4b162d;
+  color: #e6d8ca;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 4px 10px;
+  border-radius: 4px;
+  max-width: 220px;
+  white-space: normal;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #4b162d;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after,
+[data-tooltip]:hover::before,
+[data-tooltip]:focus-visible::before { opacity: 1; }
 </style>
